@@ -51,11 +51,23 @@ const Skeleton = ({ type }) => {
     </div>
   );
 
-  if (type === "feed") return Array(COUNTER).fill().map((item, index) =>(<FeedSkeleton key={index}/>));
+  const RotateLoading = () => (
+    <div className="rotate">
+      <div class="loading">
+        <span>Loading...</span>
+      </div>
+    </div>
+  );
+
+  if (type === "feed")
+    return Array(COUNTER)
+      .fill()
+      .map((item, index) => <FeedSkeleton key={index} />);
   if (type === "top") return <TopSkeleton />;
   if (type === "menu") return <MenuSkeleton />;
   if (type === "circle") return <Circle />;
   if (type === "custom") return <CustomLoading />;
+  if (type === "rotate") return <RotateLoading />;
 };
 
 export default Skeleton;
